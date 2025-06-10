@@ -1,6 +1,7 @@
 package com.mani.example.bookmyshowjun25.models;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,5 +13,11 @@ import java.util.List;
 public class Theatre extends BaseModel{
     private String name;
     private String Address;
+    @OneToMany
     private List<Screen> screens;
 }
+/*
+   1         M
+Theatre -> Screen => 1:M
+    1         1
+ */

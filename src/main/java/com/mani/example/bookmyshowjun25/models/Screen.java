@@ -1,6 +1,6 @@
 package com.mani.example.bookmyshowjun25.models;
 
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,6 +11,15 @@ import java.util.List;
 @Entity
 public class Screen extends BaseModel{
     private String name;
+    @OneToMany
     private List<Seat> seats;
+    @ElementCollection(targetClass = Feature.class)
+    @Enumerated(EnumType.ORDINAL)
     private List<Feature> features;
 }
+/*
+       1        M
+    Screen --> Seat => 1 : M
+        1       1
+
+ */
