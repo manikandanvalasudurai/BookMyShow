@@ -9,7 +9,7 @@ import java.util.List;
 
 @Getter
 @Setter
-@Entity
+@Entity(name = "shows")
 public class Show extends BaseModel{
     @ManyToOne
     private Movie movie;
@@ -17,7 +17,7 @@ public class Show extends BaseModel{
     private Date endTime;
     @ManyToOne
     private Screen screen;
-    @ElementCollection(targetClass = Feature.class)  // @ElementCollection tells JPA: "I'm storing a collection of simple values (not entities)."
+    @ElementCollection // @ElementCollection tells JPA: "I'm storing a collection of simple values (not entities)."
     @Enumerated(EnumType.ORDINAL) // @Enumerated(EnumType.STRING) tells JPA: "Store the enum as a string in the DB column."
     private List<Feature> features;
 }

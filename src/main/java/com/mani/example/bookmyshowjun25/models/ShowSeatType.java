@@ -8,7 +8,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@Entity
+@Entity()
 public class ShowSeatType extends BaseModel {
     //A basic mapping class -> price of particular show Along with particular SeatType
     @ManyToOne

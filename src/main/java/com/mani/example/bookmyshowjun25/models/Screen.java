@@ -8,18 +8,18 @@ import java.util.List;
 
 @Getter
 @Setter
-@Entity
+@Entity(name = "screens")
 public class Screen extends BaseModel{
     private String name;
     @OneToMany
     private List<Seat> seats;
-    @ElementCollection(targetClass = Feature.class)
+    @ElementCollection
     @Enumerated(EnumType.ORDINAL)
     private List<Feature> features;
 }
+
 /*
        1        M
     Screen --> Seat => 1 : M
         1       1
-
  */
