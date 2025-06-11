@@ -4,8 +4,6 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
-@Setter
 @Entity
 public class ShowSeat extends BaseModel{
     @ManyToOne
@@ -14,6 +12,30 @@ public class ShowSeat extends BaseModel{
     private Seat seat;
     @Enumerated(EnumType.ORDINAL)
     private ShowSeatStatus ShowSeatStatus;
+
+    public Show getShow() {
+        return show;
+    }
+
+    public void setShow(Show show) {
+        this.show = show;
+    }
+
+    public Seat getSeat() {
+        return seat;
+    }
+
+    public void setSeat(Seat seat) {
+        this.seat = seat;
+    }
+
+    public com.mani.example.bookmyshowjun25.models.ShowSeatStatus getShowSeatStatus() {
+        return ShowSeatStatus;
+    }
+
+    public void setShowSeatStatus(com.mani.example.bookmyshowjun25.models.ShowSeatStatus showSeatStatus) {
+        ShowSeatStatus = showSeatStatus;
+    }
 }
 
 /*

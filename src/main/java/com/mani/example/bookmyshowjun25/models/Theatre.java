@@ -3,13 +3,8 @@ package com.mani.example.bookmyshowjun25.models;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.util.List;
-
-@Getter
-@Setter
 @Entity(name = "theatres")
 public class Theatre extends BaseModel{
     private String name;
@@ -20,6 +15,38 @@ public class Theatre extends BaseModel{
     @OneToMany
     @JoinColumn(name = "theatreId")
     private List<City> cities;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAddress() {
+        return Address;
+    }
+
+    public void setAddress(String address) {
+        Address = address;
+    }
+
+    public List<Screen> getScreens() {
+        return screens;
+    }
+
+    public void setScreens(List<Screen> screens) {
+        this.screens = screens;
+    }
+
+    public List<City> getCities() {
+        return cities;
+    }
+
+    public void setCities(List<City> cities) {
+        this.cities = cities;
+    }
 }
 /*
    1         M

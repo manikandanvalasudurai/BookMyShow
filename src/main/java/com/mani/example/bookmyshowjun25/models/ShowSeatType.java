@@ -6,9 +6,7 @@ import jakarta.persistence.OneToOne;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
-@Setter
-@Entity()
+@Entity
 public class ShowSeatType extends BaseModel {
     //A basic mapping class -> price of particular show Along with particular SeatType
     @ManyToOne
@@ -17,6 +15,29 @@ public class ShowSeatType extends BaseModel {
     private SeatType seatType;
     private int price;
 
+    public Show getShow() {
+        return show;
+    }
+
+    public void setShow(Show show) {
+        this.show = show;
+    }
+
+    public SeatType getSeatType() {
+        return seatType;
+    }
+
+    public void setSeatType(SeatType seatType) {
+        this.seatType = seatType;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
 }
 
 /*

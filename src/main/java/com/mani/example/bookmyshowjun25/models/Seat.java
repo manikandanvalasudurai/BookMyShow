@@ -1,11 +1,7 @@
 package com.mani.example.bookmyshowjun25.models;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter
-@Setter
 @Entity(name = "seats")
 public class Seat extends BaseModel{
     private String seatNumber;
@@ -13,6 +9,38 @@ public class Seat extends BaseModel{
     private int colValue;
     @ManyToOne
     private SeatType seatType;
+
+    public String getSeatNumber() {
+        return seatNumber;
+    }
+
+    public void setSeatNumber(String seatNumber) {
+        this.seatNumber = seatNumber;
+    }
+
+    public int getRowValue() {
+        return rowValue;
+    }
+
+    public void setRowValue(int rowValue) {
+        this.rowValue = rowValue;
+    }
+
+    public int getColValue() {
+        return colValue;
+    }
+
+    public void setColValue(int colValue) {
+        this.colValue = colValue;
+    }
+
+    public SeatType getSeatType() {
+        return seatType;
+    }
+
+    public void setSeatType(SeatType seatType) {
+        this.seatType = seatType;
+    }
 }
 
 /*

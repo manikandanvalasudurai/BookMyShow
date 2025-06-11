@@ -6,8 +6,6 @@ import lombok.Setter;
 
 import java.util.List;
 
-@Getter
-@Setter
 @Entity(name = "screens")
 public class Screen extends BaseModel{
     private String name;
@@ -16,6 +14,30 @@ public class Screen extends BaseModel{
     @ElementCollection
     @Enumerated(EnumType.ORDINAL)
     private List<Feature> features;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<Seat> getSeats() {
+        return seats;
+    }
+
+    public void setSeats(List<Seat> seats) {
+        this.seats = seats;
+    }
+
+    public List<Feature> getFeatures() {
+        return features;
+    }
+
+    public void setFeatures(List<Feature> features) {
+        this.features = features;
+    }
 }
 
 /*
