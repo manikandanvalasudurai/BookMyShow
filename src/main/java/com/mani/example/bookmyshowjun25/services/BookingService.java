@@ -3,6 +3,7 @@ package com.mani.example.bookmyshowjun25.services;
 import com.mani.example.bookmyshowjun25.exceptions.ShowSeatNotFoundException;
 import com.mani.example.bookmyshowjun25.exceptions.UserNotFoundException;
 import com.mani.example.bookmyshowjun25.models.*;
+import com.mani.example.bookmyshowjun25.repositories.BookingRepository;
 import com.mani.example.bookmyshowjun25.repositories.ShowSeatRepository;
 import com.mani.example.bookmyshowjun25.repositories.UserRepository;
 import org.springframework.stereotype.Service;
@@ -18,11 +19,13 @@ public class BookingService {
     private UserRepository userRepository;
     private ShowSeatRepository showSeatRepository;
     private PriceCalculatorService priceCalculatorService;
+    private BookingRepository bookingRepository;
 
-    public BookingService(UserRepository userRepository, ShowSeatRepository showSeatRepository,PriceCalculatorService priceCalculatorService) {
+    public BookingService(UserRepository userRepository, ShowSeatRepository showSeatRepository,PriceCalculatorService priceCalculatorService,BookingRepository bookingRepository) {
         this.userRepository = userRepository;
         this.showSeatRepository = showSeatRepository;
         this.priceCalculatorService = priceCalculatorService;
+        this.bookingRepository = bookingRepository;
     }
     @Transactional(isolation = Isolation.SERIALIZABLE)
     public Booking createBooking(List<Long> showSeatId,Long userId) throws UserNotFoundException, ShowSeatNotFoundException {
@@ -50,7 +53,7 @@ public class BookingService {
         booking.setBookingStatus(BookingStatus.PENDING);
         booking.setUser(user);
         booking.setAmount(priceCalculatorService.calculatePrice(savedShowSeats));
-        return booking;
+        return bookingRepository.save(booking);
     }
 }
 /*
@@ -65,4 +68,5 @@ public class BookingService {
         ----------------RELEASE THE LOCK-----------
         8. Create the booking with PENDING status. Object is make the Booking Object as Pending since That needs to be Assumptions of Redirection of Payment
         9. Move to the payment page.
+
          */

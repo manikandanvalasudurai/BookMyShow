@@ -9,5 +9,8 @@ import java.util.List;
 public interface ShowSeatRepository extends JpaRepository<ShowSeat, Long>{
     //select * from show_seat where id IN (1 4 5 7 19 ...)
     List<ShowSeat> findByIdIn(List<Long> showSeatIds);
+
+    @Override
+    ShowSeat save(ShowSeat showSeat);
 }
 
